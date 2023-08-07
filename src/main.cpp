@@ -16,7 +16,7 @@ int main(int argv, char *args[])
 	int frameTime;
 
 	game = new Game();
-	game->init("GameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 640, false);
+	game->init("GameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
 	while (game->running()) {
 

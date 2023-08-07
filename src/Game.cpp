@@ -2,11 +2,13 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "TextureManager.h"
+#include "Map.h"
 
 SDL_Renderer* Game::renderer = nullptr;
 
 GameObject* player;
 GameObject* enemy;
+Map* map;
 
 Game::Game()
 {
@@ -49,6 +51,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player = new GameObject("res/textures/player.png", 0, 0);
 	enemy = new GameObject("res/textures/enemy.png", 50, 50);
+	map = new Map();
 
 }
 
@@ -56,13 +59,12 @@ void Game::handleEvents()
 {
 	SDL_Event event;
 	SDL_PollEvent(&event);
-	switch (event.type)
-	{
-	case SDL_QUIT:
-		isRunning = false;
-		break;
-	default:
-		break;
+	switch (event.type) {
+		case SDL_QUIT:
+			isRunning = false;
+			break;
+		default:
+			break;
 	}
 }
 
@@ -75,6 +77,7 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer);	
+	map->DrawMap();
 	player->Render();
 	enemy->Render();
 	SDL_RenderPresent(renderer);

@@ -8,7 +8,7 @@ class Game
 private:
 	SDL_Window* window;
 
-	bool isRunning;
+	bool isRunning = false;
 
 public:
 	Game();
